@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { logic } from "./logic";
@@ -7,13 +7,13 @@ function App() {
   const [name, setName] = useState("");
   const [myText, setMyText] = useState<string[]>([]);
 
-  const handleSubmit = (event: { preventDefault: () => void }) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setMyText((prevArray) => [...prevArray, name]);
     setName("");
   };
 
-  const handleAbort = (event: { preventDefault: () => void }) => {
+  const handleAbort = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setMyText(() => myText.slice(0, -1));
   };
